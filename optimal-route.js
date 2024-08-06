@@ -1,4 +1,3 @@
-
 const СЕВЕР = "СЕВЕР";
 const ЮГ = "ЮГ";
 const ЗАПАД = "ЗАПАД";
@@ -11,12 +10,31 @@ const directions = {
 }
 
 function optimalRoute(route) {
-    console.log(directions);
-    let currentPosition = [0, 0];
-    route.forEach(el => {
-        currentPosition =  currentPosition.map((num, index) => num + directions[el][index])
-    });
-    return currentPosition;
+    if (Array.isArray(route) === false) {
+        let currentPosition = [0, 0];
+        Object.values(route).forEach(el => {
+            currentPosition =  currentPosition.map((num, index) => num + directions[el][index])
+        });
+        return currentPosition;
+    } else {
+        let currentPosition = [0, 0];
+        route.forEach(el => {
+            currentPosition =  currentPosition.map((num, index) => num + directions[el][index])
+        });
+        return currentPosition;
+    }
+
+
 }
 
-optimalRoute(["СЕВЕР", "ЮГ", "ЮГ", "ЗАПАД", "ВОСТОК", "СЕВЕР", "ВОСТОК"]);
+optimalRoute({
+    dir1: "СЕВЕР",
+    dir2: "ЮГ",
+    dir3: "ЮГ",
+    dir4: "ЗАПАД",
+    dir5: "ВОСТОК",
+    dir6: "СЕВЕР",
+    dir7: "ВОСТОК",
+    dir8: "ЗАПАД",
+    dir9: "ЗАПАД",
+  })
